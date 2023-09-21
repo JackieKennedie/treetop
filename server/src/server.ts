@@ -58,3 +58,5 @@ app.listen(port, () => {
 });
 
 db.users.persistence.setAutocompactionInterval(5000);
+
+export default app;
