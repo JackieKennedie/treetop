@@ -5,7 +5,7 @@ import {Express, Request, Response } from 'express';
 const app: Express = express();
 const Datastore = require("nedb");
 
-const port = 8080;
+const port = process.env.port || 8080;
 const db = {
   users: new Datastore("./db/users.db"),
   posts: new Datastore("./db/posts.db")
