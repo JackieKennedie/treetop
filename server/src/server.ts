@@ -1,7 +1,6 @@
 import express from "express";
 import {Express, Request, Response } from 'express';
 
-
 const app: Express = express();
 const Datastore = require("nedb");
 
