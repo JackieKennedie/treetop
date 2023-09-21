@@ -18,7 +18,7 @@ const Post = ({id, username, caption, img_url}: Props) => {
                 </a>
             </span>
             
-            <img src={img_url} className="rounded-lg" width={500} height={300}/>
+            {img_url && <img src={img_url} className="rounded-lg" width={500} height={300}/>}
             <section>
                 <button className="rounded-full w-10 border-5 bg-cream mt-3 mx-2 py-2 px-2.5 ">🪤</button>
                 <button className="rounded-full w-10 border-5 bg-cream mt-3 mx-2 py-2 px-2.5">💬</button>

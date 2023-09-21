@@ -5,7 +5,7 @@ const Home = () => {
   const [postData, setPostData] : [any, any] = useState([]);
 
     useEffect(() => {
-      fetch('https://treetop-api.vercel.app/api/posts/home')
+      fetch('/api/posts/home')
       .then(res => res.json())
       .then(setPostData)
     },[]);    
