@@ -8,13 +8,13 @@ const User = () => {
     const {user_id} = useParams();
 
     useEffect(() => {
-        fetch(`/api/user/${user_id}`)
+        fetch("/api/user/" + user_id)
         .then(res => res.json())
         .then(setUserData)
     },[]);
 
     useEffect(() => {
-        fetch(`/api/posts/${user_id?.padStart(5,'0')}`)
+        fetch("/api/posts/" + user_id)
         .then(res => res.json())
         .then(setPostData)
       },[]);    

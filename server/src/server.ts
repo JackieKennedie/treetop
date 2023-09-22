@@ -1,5 +1,8 @@
 import express from "express";
 import {Express, Request, Response } from 'express';
+import { sql } from "@vercel/postgres";
+
+require('dotenv').config();
 
 const app: Express = express();
 
@@ -18,18 +21,22 @@ const data = [
 
 ];
 
-
 app.use(express.static(__dirname + "/assets"));
 
 app.get("/api/posts/home", (req: Request, res: Response) => {
   res.send(data);
 });
 
-app.get("/api/posts/:id([0-9]{5})", (req: Request, res: Response) => {
+let test = async () => {
+  const { rows } = await sql`SELECT * FROM test;`
+  console.log(rows);
+};
+
+app.get("/api/posts/:id", (req: Request, res: Response) => {
   res.send("YOOOOO");
 });
 
-app.get("/api/user/:id([0-9]{5})", (req: Request, res: Response) => {
+app.get("/api/user/:id", (req: Request, res: Response) => {
   res.send("YOOOOOO");
 });
 
