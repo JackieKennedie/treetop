@@ -20,8 +20,6 @@ const User = () => {
         .then(setPostData)
       },[]);    
 
-    console.log(postData);
-
     return (
         <section key={user_id}>
             <section key={user_id} className="text-cream mt-14">{userData ? userData.map((item: any) => (
