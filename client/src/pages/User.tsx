@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { PostContainer } from "../components";
-import api_string from "../api";
+import api_string from "../api_string";
 
 const User = () => {
     const [userData, setUserData] = useState([]);

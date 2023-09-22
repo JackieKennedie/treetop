@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { PostContainer } from "../components";
-import api_string from "../api";
+import api_string from "../api_string";
 
 const Home = () => {
   const [postData, setPostData] : [any, any] = useState([]);
