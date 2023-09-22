@@ -5,39 +5,40 @@ import { sql } from "@vercel/postgres";
 require('dotenv').config();
 
 const app: Express = express();
-
 const port = process.env.port || 8080;
 
-//let date = new Date(); 
+let date = new Date(); 
 
-//console.log(`${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}.${date.getSeconds()} ${-date.getTimezoneOffset() / 60}`);
+console.log(`${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}.${date.getSeconds()} ${-date.getTimezoneOffset() / 60}`);
 
-const data = [
-  {"user_id":"0","username":"Jim","caption":"poopy","likes":"0","time_posted":"2023-9-20 23:33.16 -4","_id":"Akd6xeSfXJWeY5dA"},
-{"user_id":"0","username":"Jim","caption":"poopy 3","likes":"0","time_posted":"2023-9-20 23:33.16 -4","_id":"Ay8LEcbSVkcQZzC4"},
-{"user_id":"0","username":"Jim","caption":"Introducing the one and only Mr. Sniffles, our resident banana connoisseur with a nose that could rival a truffle-hunting pig! 🍌🐵😂Legend has it that Mr. Sniffles' nose is so sensitive that it can detect the exact moment a banana reaches its peak ripeness from a mile away. The other monkeys in the jungle have even started a betting pool on when he'll make his move, and let's just say, Mr. Sniffles is always the top banana when it comes to predictions!","likes":"0","time_posted":"2023-9-20 23:48.16 -4","_id":"GAOJmJK8bCndeiOX"},
-{"user_id":"1","username":"Bob","caption":"poopee","likes":"0","time_posted":"2023-9-20 23:33.16 -4","_id":"g5usbdDZbcXvHlUL"},
-{"user_id":"0","username":"Jim","caption":"poopy 2","likes":"0","time_posted":"2023-9-20 23:33.16 -4","_id":"uy2LprWgYDmTBdJh"}
+//INSERT INTO post (user_id, username, content, likes, time_posted) VALUES (1, 'Jim', 'poopy', 0, 2023-9-21 21:34.51 -4);
 
-];
 
 app.use(express.static(__dirname + "/assets"));
 
 app.get("/api/posts/home", (req: Request, res: Response) => {
-  res.send(data);
+  const get_posts = async () => {
+    const { rows } = await sql`SELECT * FROM post;`
+    res.send(rows);
+  };
+  get_posts();
 });
 
-let test = async () => {
-  const { rows } = await sql`SELECT * FROM test;`
-  console.log(rows);
-};
 
 app.get("/api/posts/:id", (req: Request, res: Response) => {
-  res.send("YOOOOO");
+  const get_user_posts = async () => {
+    const { rows } = await sql`SELECT * FROM post WHERE user_id = ${req.params.id};`
+    res.send(rows);
+  };
+  get_user_posts();
 });
 
 app.get("/api/user/:id", (req: Request, res: Response) => {
-  res.send("YOOOOOO");
+  const get_user_posts = async () => {
+    const { rows } = await sql`SELECT * FROM "user" WHERE id = ${req.params.id};`
+    res.send(rows);
+  };
+  get_user_posts();
 });
 
 app.get("*", (req: Request, res: Response) => {
