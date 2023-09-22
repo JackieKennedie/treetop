@@ -7,9 +7,8 @@ require('dotenv').config();
 const app: Express = express();
 const port = process.env.port || 8080;
 
-let date = new Date(); 
-
-console.log(`${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}.${date.getSeconds()} ${-date.getTimezoneOffset() / 60}`);
+//let date = new Date(); 
+//console.log(`${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}.${date.getSeconds()} ${-date.getTimezoneOffset() / 60}`);
 
 //INSERT INTO post (user_id, username, content, likes, time_posted) VALUES (1, 'Jim', 'poopy', 0, 2023-9-21 21:34.51 -4);
 
@@ -23,7 +22,6 @@ app.get("/api/posts/home", (req: Request, res: Response) => {
   };
   get_posts();
 });
-
 
 app.get("/api/posts/:id", (req: Request, res: Response) => {
   const get_user_posts = async () => {
@@ -48,6 +46,5 @@ app.get("*", (req: Request, res: Response) => {
 app.listen(port, () => {
   console.log(`[server]: Server is running at http://localhost:${port}`);
 });
-
 
 export default app;
