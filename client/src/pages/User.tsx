@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { PostContainer } from "../components";
+import api_string from "../api";
 
 const User = () => {
     const [userData, setUserData] = useState([]);
@@ -8,13 +9,13 @@ const User = () => {
     const {user_id} = useParams();
 
     useEffect(() => {
-        fetch("/api/user/" + user_id)
+        fetch(api_string + "/api/user/" + user_id)
         .then(res => res.json())
         .then(setUserData)
     },[]);
 
     useEffect(() => {
-        fetch("/api/posts/" + user_id)
+        fetch(api_string + "/api/posts/" + user_id)
         .then(res => res.json())
         .then(setPostData)
       },[]);    

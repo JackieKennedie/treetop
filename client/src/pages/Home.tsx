@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import { PostContainer } from "../components";
+import api_string from "../api";
 
 const Home = () => {
   const [postData, setPostData] : [any, any] = useState([]);
 
     useEffect(() => {
-      fetch('/api/posts/home')
+      fetch(api_string + '/api/posts/home')
       .then(res => res.json())
       .then(setPostData)
     },[]);    
